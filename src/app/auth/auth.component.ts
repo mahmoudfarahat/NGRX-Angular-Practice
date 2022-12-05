@@ -11,7 +11,8 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
-
+import * as fromApp from '../store/app.reducer'
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html'
@@ -27,7 +28,8 @@ export class AuthComponent implements OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private store: Store<fromApp.AppState>
   ) {}
 
   onSwitchMode() {
