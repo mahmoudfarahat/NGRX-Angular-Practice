@@ -1,3 +1,4 @@
+import { appReducer } from './store/app.reducer';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { LoggingService } from './logging.service';
 import {StoreModule} from '@ngrx/store'
 import { ShoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import * as fromApp from './store/app.reducer'
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   imports: [
@@ -19,7 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-     StoreModule.forRoot({shoppingList : ShoppingListReducer}),
+     StoreModule.forRoot(fromApp.appReducer),
      StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 
   ],
