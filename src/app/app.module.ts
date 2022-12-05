@@ -1,8 +1,9 @@
+import { AuthEffects } from './auth/store/auth.effects';
 import { appReducer } from './store/app.reducer';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import {EffectsModule} from '@ngrx/effects'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,7 @@ import * as fromApp from './store/app.reducer'
     CoreModule,
      StoreModule.forRoot(fromApp.appReducer),
      StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-
+  EffectsModule.forRoot([AuthEffects])
   ],
   bootstrap: [AppComponent],
   // providers: [LoggingService]
